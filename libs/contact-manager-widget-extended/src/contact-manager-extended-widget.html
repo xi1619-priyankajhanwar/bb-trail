@@ -1,0 +1,111 @@
+
+<bb-icon-ui
+name="shopping-cart"
+size="xxl"
+color="primary"
+backgroundType="circle"
+></bb-icon-ui>
+    <bb-contact-manager-widget></bb-contact-manager-widget>
+  
+    <!-- <ng-template bbContactsDetailCustomizable let-hostRef let-item="item">
+       sfsdfsdafsdfgsdf
+      </ng-template> -->
+      <ng-template bbContactsDetailCustomizable let-hostRef let-item="item">
+        <div class="bb-block bb-block--xl">
+          <div class="bb-stack bb-stack--align-bottom">
+            <div class="bb-stack__item bb-stack__item--fill">
+              <div
+                class="bb-block"
+                data-role="contact-details-info-name"
+              >
+                <span
+                  class="d-none"
+                  data-role="create-contact-label"
+                  aria-hidden="true"
+                  i18n-heading="Create contact heading | Title shown when user is in create contact@@contact-manager-detail.create.heading"
+                  #heading
+                >
+                  Create contact
+                </span>
+                <bb-header-ui
+                  data-role="create-new-contact-label"
+                  headingType="h3"
+                  [heading]="hostRef.item.name || heading.textContent"
+                >
+                </bb-header-ui>
+              </div> 
+            </div>
+            <div
+              *ngIf="hostRef.item.name"
+              class="bb-stack__item bb-stack__item--push-right"
+            >
+              <span
+                bbTooltip="Edit"
+                triggers="hover focus"
+              >
+                <button
+                  data-role="contact-edit-button"
+                  bbButton
+                  circle="true"
+                  color="link"
+                  (click)="hostRef.edit(hostRef.item.id)"
+                  i18n="Edit Contact Button | Button for editing an existing contact@@contact-manager-detail.button.edit"
+                  aria-label="Edit Contact"
+                  i18n-aria-label="Edit Contact | Aria label edit contact menu@@contact-manager-detail.label.actions.edit"
+                >
+                  <bb-icon-ui
+                    name="edit"
+                    color="dark"
+                  ></bb-icon-ui>
+                </button>
+              </span>
+              <span
+                bbTooltip="Delete"
+                triggers="hover focus"
+              >
+                <button data-role="contact-delete-button"
+                  bbButton
+                  circle="true"
+                  color="link"
+                  (click)="hostRef.openDeleteModal(hostRef.modalContent)"
+                  i18n="Delete Contact Button | Button for deleting an existing contact@@contact-manager-detail.detail.button.delete"
+                  data-role="delete-button"
+                  aria-label="Delete Contact"
+                  i18n-aria-label="Delete Contact | Aria label delete contact menu@@contact-manager-detail.label.actions.delete"
+                >
+                  <bb-icon-ui name="delete" color="dark"></bb-icon-ui>
+                </button>
+              </span>
+            </div>
+          </div>
+          <hr/>
+        </div>
+        <div
+          class="bb-lock bb-lock bb-block--lg"
+          *ngIf="hostRef.showDetail"
+        >
+          <span
+            class="d-none"
+            aria-hidden="true"
+            i18n="Account number | Heading for account number or IBAN@@contact-manager-detail.label.account.number.heading"
+            #heading
+          >
+            {hostRef.accountType, hostRef.accountTypeRef.IBAN, IBAN {IBAN} other {Account number}}
+          </span>
+          <bb-header-ui
+            headingType="h5"
+            [heading]="heading.textContent"
+            class="bb-block bb-block-md"
+          >
+          </bb-header-ui>
+          <div
+            class="bb-bock bb-block-md"
+            data-role="contact-details-info-alias"
+          >
+            <span *ngIf="hostRef.item?.accounts[0] as account">
+              {{ account[hostRef.accountTypeKeyRef[hostRef.accountType]] }}
+            </span>
+          </div>
+        </div>
+      </ng-template>
+    

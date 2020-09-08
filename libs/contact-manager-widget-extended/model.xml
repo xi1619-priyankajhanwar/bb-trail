@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="true"?>
+
+-<catalog totalSize="1">
+
+
+-<widget>
+
+<name>bb-contact-manager-ang</name>
+
+
+-<tags>
+
+<tag type="regular" manageable="true" blacklist="false">wc3</tag>
+
+</tags>
+
+<changeToken>96a14c71-3a75-4510-a3eb-8c6fad28d733</changeToken>
+
+<lockState>UNLOCKED</lockState>
+
+
+-<properties>
+
+
+-<property type="string" name="classId">
+
+<value type="string">ContactManagerWidgetComponent</value>
+
+</property>
+
+
+-<property type="string" name="paginationType" viewHint="text-input,admin" label="Pagination type (pagination, load-more)">
+
+<value type="string">pagination</value>
+
+</property>
+
+
+-<property type="string" name="Description">
+
+<value type="string"/>
+
+</property>
+
+
+-<property type="string" name="src">
+
+<value type="string">$(itemRoot)/index.html</value>
+
+</property>
+
+
+-<property type="string" name="render.requires">
+
+<value type="string">render-bb-widget-3</value>
+
+</property>
+
+
+-<property type="long" name="maxNavPages" viewHint="text-input,admin" label="Max. number of navigation pages">
+
+<value type="long">3</value>
+
+</property>
+
+
+-<property type="boolean" name="newContact" viewHint="text-input,admin,manager" label="Enable the creation of new contacts">
+
+<value type="boolean">true</value>
+
+</property>
+
+
+-<property type="string" name="pageSize" viewHint="text-input,manager" label="Number of contacts per page">
+
+<value type="string">5</value>
+
+</property>
+
+
+-<property type="string" name="label">
+
+<value type="string">Angular Contact Manager WC3 Widget</value>
+
+</property>
+
+
+-<property type="string" name="title" viewHint="admin,designModeOnly" label="Title">
+
+<value type="string">Contact Manager WC3</value>
+
+</property>
+
+
+-<property type="boolean" name="showAvatar" viewHint="text-input,manager" label="Display avatars">
+
+<value type="boolean">true</value>
+
+</property>
+
+
+-<property type="string" name="thumbnailUrl">
+
+<value type="string">$(itemRoot)/icon.png</value>
+
+</property>
+
+</properties>
+
+</widget>
+
+</catalog>

@@ -1,0 +1,30 @@
+#%RAML 1.0
+---
+title: Locations
+version: v1
+baseUri: "{version}"
+
+types:
+  Location: !include schemas/location.json
+  LocationsResponseObject: !include schemas/locations-get-response.json
+  Locations: !include schemas/locations.json
+  Address: !include schemas/address.json
+  Coordinates: !include schemas/coordinates.json
+
+/locations:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: LocationsResponseObject
+            example: !include examples/mock-data.json
+
+  /{locationId}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: Location
+              example: !include examples/location.json

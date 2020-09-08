@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "coordinates": {
+      "$ref": "coordinates.json"
+    },
+    "address": {
+      "$ref": "address.json"
+    },
+    "id": {
+      "type": "string",
+      "description": "A unique identifier for the todo item"
+    },
+    "name": {
+      "type": "string",
+      "description": "The location name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Whether the location is atm or office"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type",
+    "coordinates",
+    "address"
+  ]
+}

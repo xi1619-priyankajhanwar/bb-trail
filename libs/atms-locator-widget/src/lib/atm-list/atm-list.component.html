@@ -1,0 +1,18 @@
+
+<ul class="list-group">
+  <li class="list-group-item active">Peachtree ATM Locator</li>
+  <li class="list-group-item" *ngFor="let location of locations | slice: 0 : (numberOfLocations$ | async)">
+    <div>
+      <div class="float-left">
+        <span>{{ location.name | titlecase}}</span>
+        <div class="text-muted">{{ location.address.country | titlecase }}</div>
+      </div>
+      <div class="float-right">
+        <button type="button" class="btn btn-link">
+          <bb-icon-ui name="accounts" size="sm"></bb-icon-ui>
+          &nbsp;View Address
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>

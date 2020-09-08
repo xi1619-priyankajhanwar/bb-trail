@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "description": "Latitude expressed as a number"
+    },
+    "longitude": {
+      "type": "number",
+      "description": "Longitude expressed as a number"
+    }
+  },
+  "required": [
+    "latitude",
+    "longitude"
+  ]
+}

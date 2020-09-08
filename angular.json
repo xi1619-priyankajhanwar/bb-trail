@@ -1,0 +1,334 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "banking-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "apps/banking-app",
+      "sourceRoot": "apps/banking-app/src",
+      "prefix": "pt",
+      "architect": {
+        "build": {
+          "builder": "@bb-cli/bb-ang:browser",
+          "options": {
+            "outputPath": "dist/banking-app",
+            "index": "apps/banking-app/src/index.html",
+            "main": "apps/banking-app/src/main.ts",
+            "polyfills": "apps/banking-app/src/polyfills.ts",
+            "tsConfig": "apps/banking-app/tsconfig.app.json",
+            "assets": [
+              {
+                "input": "dist/custom-project-assets",
+                "glob": "**/*",
+                "output": "assets"
+              },
+              "apps/banking-app/src/favicon.ico",
+              "apps/banking-app/src/assets"
+            ],
+            "styles": [
+              "themes/new-theme/scss/main.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/banking-app/src/environments/environment.ts",
+                  "with": "apps/banking-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "shared": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/banking-app/src/environments/environment.ts",
+                  "with": "apps/banking-app/src/environments/environment.shared.ts"
+                }
+              ]
+            },
+            "training": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/banking-app/src/environments/environment.ts",
+                  "with": "apps/banking-app/src/environments/environment.training.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "aot": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "banking-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "banking-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "banking-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/banking-app/src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "apps/banking-app/src/polyfills.ts",
+            "tsConfig": "apps/banking-app/src/../../../tsconfig.spec.json",
+            "environment": "dev",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "test.ts",
+              "**/polyfills.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/banking-app/tsconfig.app.json",
+              "apps/banking-app/src/../../../tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "banking-app-e2e": {
+      "projectType": "application",
+      "prefix": "pt",
+      "root": "apps/banking-app-e2e",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/banking-app-e2e/protractor.conf.js",
+            "devServerTarget": "banking-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "banking-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/banking-app-e2e/tsconfig.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "contact-manager-widget-extended": {
+      "root": "libs/contact-manager-widget-extended",
+      "sourceRoot": "libs/contact-manager-widget-extended/src",
+      "projectType": "library",
+      "prefix": "pt",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/contact-manager-widget-extended/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "apps/banking-app/src/polyfills.ts",
+            "tsConfig": "./tsconfig.spec.json",
+            "environment": "dev",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "test.ts",
+              "**/polyfills.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "files": [
+              "libs/contact-manager-widget-extended/**/*.ts"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "transactions-list-widget-extended": {
+      "root": "libs/transactions-list-widget-extended",
+      "sourceRoot": "libs/transactions-list-widget-extended/src",
+      "projectType": "library",
+      "prefix": "pt",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/transactions-list-widget-extended/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "apps/banking-app/src/polyfills.ts",
+            "tsConfig": "./tsconfig.spec.json",
+            "environment": "dev",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "test.ts",
+              "**/polyfills.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "files": [
+              "libs/transactions-list-widget-extended/**/*.ts"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "atms-locator-widget": {
+      "root": "libs/atms-locator-widget",
+      "sourceRoot": "libs/atms-locator-widget/src",
+      "projectType": "library",
+      "prefix": "pt",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/atms-locator-widget/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "apps/banking-app/src/polyfills.ts",
+            "tsConfig": "./tsconfig.spec.json",
+            "environment": "dev",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "test.ts",
+              "**/polyfills.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "files": [
+              "libs/atms-locator-widget/**/*.ts"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "atm-data": {
+      "root": "libs/atm-data",
+      "sourceRoot": "libs/atm-data/src",
+      "projectType": "library",
+      "prefix": "pt",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/atm-data/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "apps/banking-app/src/polyfills.ts",
+            "tsConfig": "./tsconfig.spec.json",
+            "environment": "dev",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "test.ts",
+              "**/polyfills.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "files": [
+              "libs/atm-data/**/*.ts"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@bb-cli/schematics"
+  },
+  "schematics": {
+    "@bb-cli/schematics:widget": {
+      "npmScope": "peachtree"
+    },
+    "@bb-cli/schematics:library": {
+      "npmScope": "peachtree"
+    },
+    "@bb-cli/schematics:data-module": {
+      "npmScope": "peachtree"
+    }
+  },
+  "defaultProject": "banking-app"
+}

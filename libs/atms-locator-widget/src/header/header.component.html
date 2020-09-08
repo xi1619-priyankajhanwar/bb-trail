@@ -1,0 +1,21 @@
+
+<ng-container [ngSwitch]="headingType">
+  <h1 *ngSwitchCase="'h1'">
+    {{ heading }}
+  </h1>
+  <h2 *ngSwitchCase="'h2'">
+    {{ heading }}
+  </h2>
+  <h3 *ngSwitchCase="'h3'">
+    {{ heading }}
+  </h3>
+  <h4 *ngSwitchCase="'h4'">
+    {{ heading }}
+  </h4>
+  <h5 *ngSwitchCase="'h5'">
+    {{ heading }}
+  </h5>
+  <h6 *ngSwitchCase="'h6'">
+    {{ heading }}
+  </h6>
+</ng-container>
